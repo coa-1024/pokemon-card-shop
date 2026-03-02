@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>카드 상세</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>카드 상세 페이지</h1>
+  </header>
+
+  <main id="detail-container"></main>
+
+  <script>
+    const cards = [
+      {
+        id: 1,
+        name: "리자몽 EX",
+        price: 150000,
+        image: "https://picsum.photos/200?random=1",
+        description: "불타는 전설의 포켓몬!"
+      },
+      {
+        id: 2,
+        name: "피카츄 VMAX",
+        price: 80000,
+        image: "https://picsum.photos/200?random=2",
+        description: "전기의 힘을 지닌 피카츄!"
+      },
+      {
+        id: 3,
+        name: "뮤 V",
+        price: 60000,
+        image: "https://picsum.photos/200?random=3",
+        description: "신비한 초능력 포켓몬!"
+      }
+    ];
+
+    const id = parseInt(localStorage.getItem("selectedCard"));
+    const card = cards.find(c => c.id === id);
+
+    const container = document.getElementById("detail-container");
+
+    if (card) {
+      container.innerHTML = `
+        <div class="card">
+          <img src="${card.image}" />
+          <h2>${card.name}</h2>
+          <p>${card.price.toLocaleString()}원</p>
+          <p>${card.description}</p>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
